@@ -1,12 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { minimize: true }
+          }
+        ]
+      },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -27,12 +36,13 @@ module.exports = {
   },
   devServer: {
     open: true,
-    watchContentBase: true,
+    //watchContentBase: true,
     hot: true,
-    contentBase: path.join(__dirname, 'dist'),
-    publicPath: '/assets'
+    //contentBase: path.join(__dirname, 'dist'),
+    //publicPath: '/assets'
   },
   plugins: [
+    new HtmlWebPackPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
 };
