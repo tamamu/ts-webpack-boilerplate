@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^2.1.1",
+    "jest": "^24.7.1",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.4.4",
     "typescript": "^3.4.5",
