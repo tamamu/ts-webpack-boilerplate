@@ -31,18 +31,22 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js']
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/assets')
+    filename: 'js/bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   devServer: {
     open: true,
     //watchContentBase: true,
     hot: true,
-    //contentBase: path.join(__dirname, 'dist'),
-    //publicPath: '/assets'
+    contentBase: path.join(__dirname, 'dist'),
+    publicPath: '/'
   },
   plugins: [
-    new HtmlWebPackPlugin(),
+    new HtmlWebPackPlugin({
+      filename: path.resolve(__dirname, 'dist/index.html'),
+      template: path.resolve(__dirname, 'src/index.html')
+    }),
     new webpack.HotModuleReplacementPlugin()
   ]
 };
